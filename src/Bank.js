@@ -12,4 +12,6 @@ Bank.prototype.withdraw = function(amount){
 
 Bank.prototype.deposit = function(amount){
   this.balance += amount;
+  var transaction = new Transaction('credit', amount);
+  return transaction;
 }
