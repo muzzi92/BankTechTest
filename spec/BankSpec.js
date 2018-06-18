@@ -21,6 +21,17 @@ describe('Bank', function(){
       instance = bank.withdraw();
       expect(instance instanceof Transaction).toBeTruthy();
     })
+    it('Pushes a complete transaction to the transactions array', function(){
+      bank.withdraw(10);
+      expect(bank.transactions[0] instanceof Transaction).toBeTruthy();
+    })
+  })
+
+  describe('#Deposit', function(){
+    it('Increases balance by 10 when parameter is 10', function(){
+      bank.deposit(10);
+      expect(bank.balance).toEqual(10);
+    })
   })
 
 })
