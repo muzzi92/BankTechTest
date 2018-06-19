@@ -3,5 +3,5 @@ function TransactionHistory(){
 }
 
 TransactionHistory.prototype.addToLog = function(transaction){
-  this.log.push(transaction);
+  this.log.unshift(transaction);
 };
