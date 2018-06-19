@@ -36,10 +36,10 @@ describe('Bank', function(){
 
   describe('#Statement', function(){
     it('Calls the prettyPrint function', function(){
-      var prettyPrintSpy = spyOn(Printer.prototype, 'prettyPrint');
+      var printStatementSpy = spyOn(Printer.prototype, 'printBankStatement');
       bank.deposit(10);
       bank.statement();
-      expect(prettyPrintSpy).toHaveBeenCalledWith(bank.transactions);
+      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions);
     })
   })
 

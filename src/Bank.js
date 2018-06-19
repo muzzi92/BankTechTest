@@ -15,7 +15,7 @@ Bank.prototype.deposit = function(amount){
 
 Bank.prototype.statement = function(){
   var printer = new Printer('Date', 'Type', 'Amount', 'Balance');
-  printer.prettyPrint(this.transactions.reverse());
+  printer.printBankStatement(this.transactions.reverse());
 }
 
 Bank.prototype.__addToTransactionHistory__ = function(completeTransaction){
