@@ -15,23 +15,27 @@ describe('Printer', function(){
 
   describe('#PrintBankStatement', function(){
     it('Prints transaction values into a table', function(){
-      var transaction = new Transaction('credit', 10, 10, new Date(2010, 10, 10));
-      var transactionsArray = [transaction];
-      printer.printBankStatement(transactionsArray);
+      var transactionSpy = jasmine.createSpy('Transaction', {
+        'date': 'Wed, 10 Nov 2010 00:00:00 GMT',
+        'type': 'credit',
+        'amount': 10,
+        'updatedBalance': 10
+      });
+      printer.printBankStatement([transactionSpy]);
       expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   credit   ||      10      ||   10');
     });
   });
 
   describe('#__printColumnHeaders__', function(){
     it('Prints arguments as a formatted string', function(){
-      printer.__printColumnHeaders__(['Title One', 'Title Two']);
+      printer.__printColumnHeaders(['Title One', 'Title Two']);
       expect(console.log).toHaveBeenCalledWith('|       Title One       ||       Title Two       |');
     });
   });
 
   describe('#__printHorizontalBorder__', function(){
     it('Prints the input number of equals signs to form a border', function(){
-      printer.__printHorizontalBorder__(5);
+      printer.__printHorizontalBorder(5);
       expect(console.log).toHaveBeenCalledWith('=====');
     });
   });
