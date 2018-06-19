@@ -1,6 +1,6 @@
 function Bank(){
   this.balance = 0;
-  this.transactions = [];
+  this.transactions = new TransactionHistory().log;
 };
 
 Bank.prototype.withdraw = function(amount){

@@ -12,6 +12,14 @@ describe('Bank', function(){
     expect(bank.transactions).toEqual([]);
   })
 
+  it('Can store multiple objects in transactions array', function(){
+    var transactionSpyOne = jasmine.createSpy('transaction');
+    var transactionSpyTwo = jasmine.createSpy('transaction');
+    bank.transactions.push(transactionSpyOne);
+    bank.transactions.push(transactionSpyTwo);
+    expect(bank.transactions).toContain(transactionSpyOne);
+  })
+
   describe('#Withdraw', function(){
     it('Reduces balance by 10 when parameter is 10', function(){
       bank.withdraw(10);

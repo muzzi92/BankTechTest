@@ -1,0 +1,3 @@
+function TransactionHistory(){
+  this.log =[];
+};
