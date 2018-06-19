@@ -6,8 +6,8 @@ describe('Bank', function(){
     bank = new Bank();
   });
 
-  it('Constructs with a balance attribute equal to a Balance instance', function(){
-    expect(bank.balance instanceof Balance).toBeTruthy();
+  it('Constructs with a balance attribute equal to zero', function(){
+    expect(bank.balance).toEqual(0);
   });
 
   it('Constructs with a transactions attribute equal to a TransactionHistory instance', function(){
@@ -16,10 +16,9 @@ describe('Bank', function(){
 
 
   describe('#Withdraw', function(){
-    it('Calls the Balance decrease function with 10, when argument is 10', function(){
-      var balanceSpy = spyOn(bank.balance, 'decrease');
+    it('Decreases balance by 10 when parameter is 10', function(){
       bank.withdraw(10);
-      expect(balanceSpy).toHaveBeenCalledWith(10);
+      expect(bank.balance).toEqual(-10);
     });
     it('Calls the TransactionHistory addToLog function', function(){
       var transactionHistorySpy = spyOn(bank.transactions, 'addToLog');
@@ -29,10 +28,9 @@ describe('Bank', function(){
   });
 
   describe('#Deposit', function(){
-    it('Calls the Balance increase function with 10, when argument is 10', function(){
-      var balanceSpy = spyOn(bank.balance, 'increase');
+    it('Increases balance by 10 when parameter is 10', function(){
       bank.deposit(10);
-      expect(balanceSpy).toHaveBeenCalledWith(10);
+      expect(bank.balance).toEqual(10);
     });
     it('Calls the TransactionHistory addToLog function', function(){
       var transactionHistorySpy = spyOn(bank.transactions, 'addToLog');

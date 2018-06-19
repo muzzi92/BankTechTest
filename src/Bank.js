@@ -1,15 +1,15 @@
 function Bank(){
-  this.balance = new Balance();
+  this.balance = 0;
   this.transactions = new TransactionHistory();
 }
 
 Bank.prototype.withdraw = function(amount){
-  this.balance.decrease(amount);
+  this.balance -= amount;
   this.transactions.addToLog(new Transaction('debit', amount, this.balance.current));
 };
 
 Bank.prototype.deposit = function(amount){
-  this.balance.increase(amount);
+  this.balance += amount;
   this.transactions.addToLog(new Transaction('credit', amount, this.balance.current));
 };
 
