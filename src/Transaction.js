@@ -3,4 +3,4 @@ function Transaction(type, amount, updatedBalance, date = new Date()){
   this.amount = amount;
   this.updatedBalance = updatedBalance;
   this.date = date.toUTCString();
-};
+}
