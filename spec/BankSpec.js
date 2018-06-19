@@ -51,4 +51,12 @@ describe('Bank', function(){
     })
   })
 
+  describe('#__AddToTransactionHistory__', function(){
+    it('Pushes a transaction to the transactions array', function(){
+      var transactionSpy = jasmine.createSpy('transaction');
+      bank.__addToTransactionHistory__(transactionSpy);
+      expect(bank.transactions).toContain(transactionSpy);
+    })
+  })
+
 })
