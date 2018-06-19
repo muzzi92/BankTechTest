@@ -14,6 +14,5 @@ Bank.prototype.deposit = function(amount){
 }
 
 Bank.prototype.statement = function(){
-  var printer = new Printer('Date', 'Type', 'Amount', 'Balance');
-  printer.printBankStatement(this.transactions.log.reverse());
+  new Printer().printBankStatement(this.transactions.log.reverse());
 }
