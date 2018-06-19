@@ -44,7 +44,7 @@ describe('Bank', function(){
       var printStatementSpy = spyOn(Printer.prototype, 'printBankStatement');
       bank.deposit(10);
       bank.statement();
-      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions.log.reverse());
+      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions.log);
     });
   });
 

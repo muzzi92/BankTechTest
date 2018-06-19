@@ -5,12 +5,12 @@ function Bank(){
 
 Bank.prototype.withdraw = function(amount){
   this.balance -= amount;
-  this.transactions.addToLog(new Transaction('debit', amount, this.balance.current));
+  this.transactions.addToLog(new Transaction('debit', amount, this.balance));
 };
 
 Bank.prototype.deposit = function(amount){
   this.balance += amount;
-  this.transactions.addToLog(new Transaction('credit', amount, this.balance.current));
+  this.transactions.addToLog(new Transaction('credit', amount, this.balance));
 };
 
 Bank.prototype.statement = function(){

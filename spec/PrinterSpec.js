@@ -14,6 +14,16 @@ describe('Printer', function(){
   });
 
   describe('#PrintBankStatement', function(){
+    it('Calls the __printColumnHeaders function', function(){
+      var __printColumnHeadersSpy = spyOn(printer, '__printColumnHeaders');
+      printer.printBankStatement([]);
+      expect(__printColumnHeadersSpy).toHaveBeenCalledWith(['Date', 'Credit', 'Debit', 'Balance']);
+    });
+    it('Calls the __printHorizontalBorder function', function(){
+      var __printHorizontalBorderSpy = spyOn(printer, '__printHorizontalBorder');
+      printer.printBankStatement([]);
+      expect(__printHorizontalBorderSpy).toHaveBeenCalledWith(70);
+    });
     it('Prints transaction values into a table', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
         'date': 'Wed, 10 Nov 2010 00:00:00 GMT',
@@ -22,14 +32,14 @@ describe('Printer', function(){
         'updatedBalance': 10
       });
       printer.printBankStatement([transactionSpy]);
-      expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   credit   ||      10      ||   10');
+      expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   10 ||      ||   10');
     });
   });
 
   describe('#__printColumnHeaders__', function(){
     it('Prints arguments as a formatted string', function(){
       printer.__printColumnHeaders(['Title One', 'Title Two']);
-      expect(console.log).toHaveBeenCalledWith('|       Title One       ||       Title Two       |');
+      expect(console.log).toHaveBeenCalledWith('|   Title One   ||   Title Two   |');
     });
   });
 
