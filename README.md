@@ -27,8 +27,8 @@ date || credit || debit || balance
 ## Installation
 
 * Begin by forking this repo
-* Clone it to your local machine using `git clone` followed by you SSH key
-* Open the SpecRunner.html file in your Chrome browser. This will show you all the passing unit tests for the application
+* Clone it to your local machine using `git clone` followed by your SSH key
+* Open the *SpecRunner.html* file in your Chrome browser. This will show you all the passing unit tests for the application
 * Open the Google Developer tools console on this screen, in order to interact with the application
   * Right click on the SpecRunner page rendered in the browser
   * Select *Inspect* from the options
