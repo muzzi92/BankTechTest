@@ -23,4 +23,5 @@ describe('Balance', function(){
       expect(balance.current).toEqual(-10);
     })
   })
+  
 })
