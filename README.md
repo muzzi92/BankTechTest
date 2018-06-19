@@ -68,8 +68,8 @@ The project was designed to specifically meet the requirements laid out in the c
 
 If I was to create bonus features for this challenge, they would include:
 * Adding functionality to stop users withdrawing more money than is in their account
-* Displaying a message in the console when they attempt to do so
-OR
+* Displaying a message in the console when they attempt to do so  
+OR  
 * Allow users to go a certain amount below 0, and provide a message to the console to let them know that they are in their overdraft.
 
 * Create a User object that stores personal information such as balance and pin
