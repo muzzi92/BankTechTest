@@ -8,26 +8,20 @@ describe('Bank', function(){
     expect(bank.balance).toEqual(0);
   });
 
-  it('Start with an empty array to store transactions', function(){
-    expect(bank.transactions).toEqual([]);
+  it('Starts transactions attribute equal to a TransactionHistory instance', function(){
+    expect(bank.transactions instanceof TransactionHistory).toBeTruthy();
   })
 
-  it('Can store multiple objects in transactions array', function(){
-    var transactionSpyOne = jasmine.createSpy('transaction');
-    var transactionSpyTwo = jasmine.createSpy('transaction');
-    bank.transactions.push(transactionSpyOne);
-    bank.transactions.push(transactionSpyTwo);
-    expect(bank.transactions).toContain(transactionSpyOne);
-  })
 
   describe('#Withdraw', function(){
     it('Reduces balance by 10 when parameter is 10', function(){
       bank.withdraw(10);
       expect(bank.balance).toEqual(-10);
     })
-    it('Pushes a complete transaction to the transactions array', function(){
+    it('Calls the TransactionHistory addToLog function', function(){
+      var transactionHistorySpy = spyOn(bank.transactions, 'addToLog');
       bank.withdraw(10);
-      expect(bank.transactions).toContain(jasmine.objectContaining({type: 'debit', amount: 10 }));
+      expect(transactionHistorySpy).toHaveBeenCalled();
     })
   })
 
@@ -36,9 +30,10 @@ describe('Bank', function(){
       bank.deposit(10);
       expect(bank.balance).toEqual(10);
     })
-    it('Pushes a complete transaction to the transaction array', function(){
-      bank.deposit(10);
-      expect(bank.transactions).toContain(jasmine.objectContaining({type: 'credit', amount: 10 }));
+    it('Calls the TransactionHistory addToLog function', function(){
+      var transactionHistorySpy = spyOn(bank.transactions, 'addToLog');
+      bank.withdraw(10);
+      expect(transactionHistorySpy).toHaveBeenCalled();
     })
   })
 
@@ -47,15 +42,7 @@ describe('Bank', function(){
       var printStatementSpy = spyOn(Printer.prototype, 'printBankStatement');
       bank.deposit(10);
       bank.statement();
-      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions);
-    })
-  })
-
-  describe('#__AddToTransactionHistory__', function(){
-    it('Pushes a transaction to the transactions array', function(){
-      var transactionSpy = jasmine.createSpy('transaction');
-      bank.__addToTransactionHistory__(transactionSpy);
-      expect(bank.transactions).toContain(transactionSpy);
+      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions.log.reverse());
     })
   })
 
