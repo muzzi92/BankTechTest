@@ -4,18 +4,18 @@ Printer.prototype.printBankStatement = function(array){
   this.__printColumnHeaders(['Date', 'Credit', 'Debit', 'Balance']);
   this.__printHorizontalBorder(70);
   for (var i = 0; i < array.length; i++) {
-    if (array[i].type === 1) {
+    if (array[i].type === new Bank().typeOfTransaction.CREDIT) {
       console.log(`${array[i].date} ||   ${array[i].amount} ||      ||   ${array[i].updatedBalance}`);
-    } else {
+    } else if (array[i].type === new Bank().typeOfTransaction.DEBIT) {
       console.log(`${array[i].date} ||   || ${array[i].amount}      ||   ${array[i].updatedBalance}`);
     }
   }
 };
 
-Printer.prototype.__printColumnHeaders = function(headerArray){
+Printer.prototype.__printColumnHeaders = function(arguments){
   var headerString = '';
-  for (var i = 0; i < headerArray.length; i ++) {
-    headerString += `|   ${headerArray[i]}   |`;
+  for (var i = 0; i < arguments.length; i ++) {
+    headerString += `|   ${arguments[i]}   |`;
   }
   console.log(headerString);
 };

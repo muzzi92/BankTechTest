@@ -24,7 +24,7 @@ describe('Printer', function(){
       printer.printBankStatement([]);
       expect(__printHorizontalBorderSpy).toHaveBeenCalledWith(70);
     });
-    it('Prints transaction values into a table', function(){
+    it('Prints value in the credit column when transaction is a credit', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
         'date': 'Wed, 10 Nov 2010 00:00:00 GMT',
         'type': 1,
@@ -33,6 +33,16 @@ describe('Printer', function(){
       });
       printer.printBankStatement([transactionSpy]);
       expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   10 ||      ||   10');
+    });
+    it('Prints value in the debit column when transaction is a debit', function(){
+      var transactionSpy = jasmine.createSpy('Transaction', {
+        'date': 'Wed, 10 Nov 2010 00:00:00 GMT',
+        'type': 0,
+        'amount': 10,
+        'updatedBalance': 10
+      });
+      printer.printBankStatement([transactionSpy]);
+      expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   || 10      ||   10');
     });
   });
 
