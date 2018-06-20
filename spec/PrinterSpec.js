@@ -4,7 +4,7 @@ describe('Printer', function(){
   var oldLog;
 
   beforeEach(function(){
-    printer = new Printer('Date', 'Type', 'Amount', 'Balance');
+    printer = new Printer();
     oldLog = console.log;
     console.log = jasmine.createSpy('log');
   });
@@ -27,7 +27,7 @@ describe('Printer', function(){
     it('Prints transaction values into a table', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
         'date': 'Wed, 10 Nov 2010 00:00:00 GMT',
-        'type': 'credit',
+        'type': 1,
         'amount': 10,
         'updatedBalance': 10
       });

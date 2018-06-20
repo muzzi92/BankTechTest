@@ -4,7 +4,7 @@ Printer.prototype.printBankStatement = function(array){
   this.__printColumnHeaders(['Date', 'Credit', 'Debit', 'Balance']);
   this.__printHorizontalBorder(70);
   for (var i = 0; i < array.length; i++) {
-    if (array[i].type === 'credit') {
+    if (array[i].type === 1) {
       console.log(`${array[i].date} ||   ${array[i].amount} ||      ||   ${array[i].updatedBalance}`);
     } else {
       console.log(`${array[i].date} ||   || ${array[i].amount}      ||   ${array[i].updatedBalance}`);
