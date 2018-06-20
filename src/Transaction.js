@@ -1,4 +1,4 @@
-function Transaction(type, amount, updatedBalance, date = new Date()){
+function Transaction(type, amount, updatedBalance, date){
   this.type = type;
   this.amount = amount;
   this.updatedBalance = updatedBalance;
