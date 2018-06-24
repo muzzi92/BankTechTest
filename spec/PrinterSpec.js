@@ -15,14 +15,12 @@ describe('Printer', function(){
 
   describe('#PrintBankStatement', function(){
     it('Calls the __printColumnHeaders function', function(){
-      var __printColumnHeadersSpy = spyOn(printer, '__printColumnHeaders');
       printer.printBankStatement([]);
-      expect(__printColumnHeadersSpy).toHaveBeenCalledWith(['Date', 'Credit', 'Debit', 'Balance']);
+      expect(console.log).toHaveBeenCalledWith('|   Date   ||   Credit   ||   Debit   ||   Balance   |');
     });
     it('Calls the __printHorizontalBorder function', function(){
-      var __printHorizontalBorderSpy = spyOn(printer, '__printHorizontalBorder');
       printer.printBankStatement([]);
-      expect(__printHorizontalBorderSpy).toHaveBeenCalledWith(70);
+      expect(console.log).toHaveBeenCalledWith('======================================================================');
     });
     it('Prints value in the credit column when transaction is a credit', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
