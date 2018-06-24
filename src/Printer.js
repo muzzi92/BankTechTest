@@ -21,5 +21,5 @@ Printer.prototype.__printColumnHeaders = function(arguments){
 };
 
 Printer.prototype.__printHorizontalBorder = function (number) {
-  console.log(`${"=".repeat(number)}`);
+  console.log(`${'='.repeat(number)}`);
 };

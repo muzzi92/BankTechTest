@@ -1,0 +1,31 @@
+{
+  "name": "banktt",
+  "version": "1.0.0",
+  "description": "This project was created for a technical test challenge at Makers Academy. It was built using **JavaScript** and utilised Object Orientated design principles as well as Test Driven Development.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muzzi92/BankTechTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muzzi92/BankTechTest/issues"
+  },
+  "homepage": "https://github.com/muzzi92/BankTechTest#readme"
+}
