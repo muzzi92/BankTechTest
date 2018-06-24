@@ -17,7 +17,7 @@ Printer.prototype.__printColumnHeaders = function(arguments){
 };
 
 Printer.prototype.__printHorizontalBorder = function (number) {
-  this._logger(`${'='.repeat(number)}`);
+  this._logger('='.repeat(number));
 };
 
 Printer.prototype.__printTransactions = function(transactions) {
