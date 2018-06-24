@@ -1,5 +1,5 @@
 describe('TransactionHistory', function(){
-  
+
   var transactionHistory;
 
   beforeEach(function(){
@@ -12,9 +12,9 @@ describe('TransactionHistory', function(){
 
   describe('#AddToLog', function(){
     it('Pushes transaction argument to log array', function(){
-      var transactionSpy = jasmine.createSpy('transaction');
-      transactionHistory.addToLog(transactionSpy);
-      expect(transactionHistory.log).toContain(transactionSpy);
+      var fakeTransaction = {};
+      transactionHistory.addToLog(fakeTransaction);
+      expect(transactionHistory.log).toContain(fakeTransaction);
     });
   });
 
