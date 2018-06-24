@@ -58,10 +58,11 @@ bank.statement();
 ```
 
 How it should look in the browser:
-![](https://i.imgur.com/6Mus4Zu.png)
+![](https://i.imgur.com/S9Ppa6f.png)
 
 ## Testing
 This challenge was Test Driven using Jasmine for unit testing. You can view all the passing unit tests by opening the SpecRunner.html file in your Chrome browser, as mentioned above.
+ES Lint was also used to ensure standard style guidelines were met. 
 
 ## Bonus Features Considered
 The project was designed to specifically meet the requirements laid out in the challenge, and so, no bonus features were added.
