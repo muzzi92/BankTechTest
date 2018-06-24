@@ -1,26 +1,21 @@
 describe('Printer', function(){
 
   var printer;
-  var oldLog;
+  var fakelog;
 
   beforeEach(function(){
-    printer = new Printer();
-    oldLog = console.log;
-    console.log = jasmine.createSpy('log');
-  });
-
-  afterEach(function(){
-    console.log = oldLog;
+    fakelog = jasmine.createSpy('log');
+    printer = new Printer(fakelog);
   });
 
   describe('#PrintBankStatement', function(){
     it('Calls the __printColumnHeaders function', function(){
       printer.printBankStatement([]);
-      expect(console.log).toHaveBeenCalledWith('|   Date   ||   Credit   ||   Debit   ||   Balance   |');
+      expect(fakelog).toHaveBeenCalledWith('|   Date   ||   Credit   ||   Debit   ||   Balance   |');
     });
     it('Calls the __printHorizontalBorder function', function(){
       printer.printBankStatement([]);
-      expect(console.log).toHaveBeenCalledWith('======================================================================');
+      expect(fakelog).toHaveBeenCalledWith('======================================================================');
     });
     it('Prints value in the credit column when transaction is a credit', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
@@ -30,7 +25,7 @@ describe('Printer', function(){
         'updatedBalance': 10
       });
       printer.printBankStatement([transactionSpy]);
-      expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   10 ||      ||   10');
+      expect(fakelog).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   10 ||      ||   10');
     });
     it('Prints value in the debit column when transaction is a debit', function(){
       var transactionSpy = jasmine.createSpy('Transaction', {
@@ -40,7 +35,7 @@ describe('Printer', function(){
         'updatedBalance': 10
       });
       printer.printBankStatement([transactionSpy]);
-      expect(console.log).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   || 10      ||   10');
+      expect(fakelog).toHaveBeenCalledWith('Wed, 10 Nov 2010 00:00:00 GMT ||   || 10      ||   10');
     });
   });
 
