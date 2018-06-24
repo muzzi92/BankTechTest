@@ -1,9 +1,11 @@
 describe('Bank', function(){
 
   var bank;
+  var fakePrinter;
 
   beforeEach(function(){
-    bank = new Bank();
+    fakePrinter = {};
+    bank = new Bank(fakePrinter);
   });
 
   it('Constructs with a balance attribute equal to zero', function(){
@@ -40,11 +42,16 @@ describe('Bank', function(){
   });
 
   describe('#Statement', function(){
-    it('Calls the prettyPrint function', function(){
-      var printStatementSpy = spyOn(Printer.prototype, 'printBankStatement');
-      bank.deposit(10);
+    it('Calls the printBankStatement function', function(){
+      fakePrinter.printBankStatement = jasmine.createSpy("printBankStatement");
+      bank.deposit(10, new Date(2010, 10, 10));
       bank.statement();
-      expect(printStatementSpy).toHaveBeenCalledWith(bank.transactions.log);
+      expect(fakePrinter.printBankStatement).toHaveBeenCalledWith([jasmine.objectContaining({
+        type: Transaction.CREDIT,
+        amount: 10,
+        updatedBalance: 10,
+        date: 'Wed, 10 Nov 2010 00:00:00 GMT'
+      })]);
     });
   });
 

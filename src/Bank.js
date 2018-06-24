@@ -1,6 +1,7 @@
-function Bank(){
+function Bank(printer = new Printer){
   this.balance = 0;
   this.transactions = new TransactionHistory();
+  this._printer = printer;
 }
 
 Bank.prototype.withdraw = function(amount, date = new Date()){
@@ -18,5 +19,5 @@ Bank.prototype.deposit = function(amount, date = new Date()){
 };
 
 Bank.prototype.statement = function(){
-  new Printer().printBankStatement(this.transactions.log);
+  this._printer.printBankStatement(this.transactions.log);
 };
