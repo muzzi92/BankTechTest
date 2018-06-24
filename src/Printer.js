@@ -6,9 +6,9 @@ Printer.prototype.printBankStatement = function(array){
   this.__printColumnHeaders(['Date', 'Credit', 'Debit', 'Balance']);
   this.__printHorizontalBorder(70);
   for (var i = 0; i < array.length; i++) {
-    if (array[i].type === new Bank().typeOfTransaction.CREDIT) {
+    if (array[i].type === Transaction.CREDIT) {
       this.logger(`${array[i].date} ||   ${array[i].amount} ||      ||   ${array[i].updatedBalance}`);
-    } else if (array[i].type === new Bank().typeOfTransaction.DEBIT) {
+    } else if (array[i].type === Transaction.DEBIT) {
       this.logger(`${array[i].date} ||   || ${array[i].amount}      ||   ${array[i].updatedBalance}`);
     }
   }
