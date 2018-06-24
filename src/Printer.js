@@ -1,17 +1,17 @@
 function Printer(logger = console.log){
-  this.logger = logger;
+  this._logger = logger;
 }
 
-Printer.prototype.printBankStatement = function(array){
+Printer.prototype.printBankStatement = function(transactions){
   this.__printColumnHeaders(['Date', 'Credit', 'Debit', 'Balance']);
   this.__printHorizontalBorder(70);
-  for (var i = 0; i < array.length; i++) {
-    if (array[i].type === Transaction.CREDIT) {
-      this.logger(`${array[i].date} ||   ${array[i].amount} ||      ||   ${array[i].updatedBalance}`);
-    } else if (array[i].type === Transaction.DEBIT) {
-      this.logger(`${array[i].date} ||   || ${array[i].amount}      ||   ${array[i].updatedBalance}`);
+  transactions.forEach(function(transaction) {
+    if (transaction.type === Transaction.CREDIT) {
+      this._logger(`${transaction.date} ||   ${transaction.amount} ||      ||   ${transaction.updatedBalance}`);
+    } else if (transaction.type === Transaction.DEBIT) {
+      this._logger(`${transaction.date} ||   || ${transaction.amount}      ||   ${transaction.updatedBalance}`);
     }
-  }
+  }, this);
 };
 
 Printer.prototype.__printColumnHeaders = function(arguments){
@@ -19,9 +19,9 @@ Printer.prototype.__printColumnHeaders = function(arguments){
   for (var i = 0; i < arguments.length; i ++) {
     headerString += `|   ${arguments[i]}   |`;
   }
-  this.logger(headerString);
+  this._logger(headerString);
 };
 
 Printer.prototype.__printHorizontalBorder = function (number) {
-  this.logger(`${'='.repeat(number)}`);
+  this._logger(`${'='.repeat(number)}`);
 };
