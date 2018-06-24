@@ -44,18 +44,4 @@ describe('Printer', function(){
     });
   });
 
-  describe('#__printColumnHeaders__', function(){
-    it('Prints arguments as a formatted string', function(){
-      printer.__printColumnHeaders(['Title One', 'Title Two']);
-      expect(console.log).toHaveBeenCalledWith('|   Title One   ||   Title Two   |');
-    });
-  });
-
-  describe('#__printHorizontalBorder__', function(){
-    it('Prints the input number of equals signs to form a border', function(){
-      printer.__printHorizontalBorder(5);
-      expect(console.log).toHaveBeenCalledWith('=====');
-    });
-  });
-
 });
