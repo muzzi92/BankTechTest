@@ -5,13 +5,7 @@ function Printer(logger = console.log){
 Printer.prototype.printBankStatement = function(transactions){
   this.__printColumnHeaders(['Date', 'Credit', 'Debit', 'Balance']);
   this.__printHorizontalBorder(70);
-  transactions.forEach(function(transaction) {
-    if (transaction.type === Transaction.CREDIT) {
-      this._logger(`${transaction.date} ||   ${transaction.amount} ||      ||   ${transaction.updatedBalance}`);
-    } else if (transaction.type === Transaction.DEBIT) {
-      this._logger(`${transaction.date} ||   || ${transaction.amount}      ||   ${transaction.updatedBalance}`);
-    }
-  }, this);
+  this.__printTransactions(transactions);
 };
 
 Printer.prototype.__printColumnHeaders = function(arguments){
@@ -24,4 +18,14 @@ Printer.prototype.__printColumnHeaders = function(arguments){
 
 Printer.prototype.__printHorizontalBorder = function (number) {
   this._logger(`${'='.repeat(number)}`);
+};
+
+Printer.prototype.__printTransactions = function(transactions) {
+  transactions.forEach(function(transaction) {
+    if (transaction.type === Transaction.CREDIT) {
+      this._logger(`${transaction.date} ||   ${transaction.amount} ||      ||   ${transaction.updatedBalance}`);
+    } else if (transaction.type === Transaction.DEBIT) {
+      this._logger(`${transaction.date} ||   || ${transaction.amount}      ||   ${transaction.updatedBalance}`);
+    }
+  }, this);
 };
